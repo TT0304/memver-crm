@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Repositories\Lead;
+
+use App\Core\Eloquent\Repository;
+
+class SourceRepository extends Repository
+{
+    /**
+     * Specify Model class name
+     *
+     * @return mixed
+     */
+    function model()
+    {
+        return 'App\DataStructure\Lead\Contracts\Source';
+    }
+}

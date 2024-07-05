@@ -1,0 +1,42 @@
+<?php
+
+namespace App\DataStructure\Quote\Models;
+
+use App\DataStructure\Quote\Contracts\QuoteItem as QuoteItemContract;
+use Illuminate\Database\Eloquent\Model;
+use App\Traits\TenantScoped;
+
+class QuoteItem extends Model implements QuoteItemContract
+{
+    // use TenantScoped;
+    protected $table = 'quote_items';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'sku',
+        'name',
+        'quantity',
+        'price',
+        'coupon_code',
+        'discount_percent',
+        'discount_amount',
+        'tax_percent',
+        'tax_amount',
+        'total',
+        'product_id',
+        'quote_id',
+        'client_id',
+    ];
+
+    /**
+     * Get the quote record associated with the quote item.
+     */
+    public function quote()
+    {
+        return $this->belongsTo(QuoteProxy::modelClass());
+    }
+}
